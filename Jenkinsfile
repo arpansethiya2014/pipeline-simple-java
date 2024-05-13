@@ -1,29 +1,41 @@
 pipeline {
     agent any
     
+ environment{
+
+            VERSION_NAME="1.34"
+ }
+
     stages {
-        stage("Compile") {
+        stage("compile") {
             steps {
-                sh 'javac Main.java'
+                echo "javac Main.java"
+                echo "${VERSION_NAME}"
             }
         }
         
-        stage("Run") {
+       stage("run") {
             steps {
-                sh 'java Main'
-            }
+                echo "java Main"
+           }
         }
-    }
-    
-    post {
+        }
+
+ post{
+
         always {
-            echo "Post-Build: Always executed"
+
+            echo "always"
         }
-        success {
-            echo "Post-Build: Successfully executed"
+
+        success{
+            echo "success"
         }
-        failure {
-            echo "Post-Build: Failed execution"
+
+        failure{
+            echo "failure"
         }
+
     }
+
 }
