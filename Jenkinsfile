@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("compile") {
             steps {
-                echo "javac Main.java"
+                echo "java .\Main.java"
             }
         }
         
@@ -14,4 +14,22 @@ pipeline {
            }
         }
         }
+
+ post{
+
+        always {
+
+            echo "always"
+        }
+
+        success{
+            echo "success"
+        }
+
+        failure{
+            echo "failure"
+        }
+
+    }
+
 }
