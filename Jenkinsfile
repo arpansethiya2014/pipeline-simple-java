@@ -2,34 +2,28 @@ pipeline {
     agent any
     
     stages {
-        stage("compile") {
+        stage("Compile") {
             steps {
-                echo "javac Main.java"
+                sh 'javac Main.java'
             }
         }
         
-       stage("run") {
+        stage("Run") {
             steps {
-                echo "java Main"
-           }
+                sh 'java Main'
+            }
         }
-        }
-
- post{
-
-        always {
-
-            echo "always"
-        }
-
-        success{
-            echo "success"
-        }
-
-        failure{
-            echo "failure"
-        }
-
     }
-
+    
+    post {
+        always {
+            echo "Post-Build: Always executed"
+        }
+        success {
+            echo "Post-Build: Successfully executed"
+        }
+        failure {
+            echo "Post-Build: Failed execution"
+        }
+    }
 }
