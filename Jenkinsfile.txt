@@ -8,7 +8,7 @@ pipeline {
             }
         }
         
-        stage("run") {
+       stage("run") {
             steps {
                 sh "java Main"
            }
